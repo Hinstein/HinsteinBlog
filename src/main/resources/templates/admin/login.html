@@ -1,0 +1,34 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>后台管理</title>
+    <link href="bootstrap.min.css" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.css}" rel="stylesheet"
+          type="text/css"/>
+    <link href="login.css" th:href="@{/assets/css/login.css}" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body class="text-center">
+<div class="login_box">
+
+    <div class="login_l_img"><img src="images/login-img.png" th:src="@{/assets/img/login-img.png}"/></div>
+    <div class="login">
+        <div class="login_logo"><a href="#"><img src="images/login_logo.png"
+                                                 th:src="@{/assets/img/login_logo.png}"/></a></div>
+        <div class="login_name">
+            <h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
+            <!--判断-->
+            <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}">sss</p>
+        </div>
+        <form class="form-signin" action="dashboard.html" th:action="@{/admin/login/submit}" method="post">
+            <input name="username" type="text" placeholder="Username">
+            <input name="password" type="password" placeholder="Password">
+            <button class="btn btn-lg btn-primary btn-block" type="submit" th:text="#{login.btn}">Sign in</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

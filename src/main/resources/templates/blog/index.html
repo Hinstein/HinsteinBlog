@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Welcome to Hinstein blog</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/blog/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.css}"
+          rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="assets/blog/css/all.min.css" th:href="@{/assets/blog/css/all.min.css}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/blog/css/clean-blog.min.css" th:href="@{/assets/blog/css/clean-blog.min.css}" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">Hinstein Blog</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/blog/contact}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('/assets/blog/img/home-bg.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Hinstein Blog</h1>
+                    <span class="subheading">A Blog by A Handsome Boy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-preview" th:each="article:${articles}">
+                <a href="post.html" th:href="@{/blog/post/}+${article.id}">
+                    <h2 class="post-title" th:text="${#strings.abbreviate(article.title,50)}">
+                        Man must explore, and this is exploration at its greatest
+                    </h2>
+                    <h3 class="post-subtitle" th:utext="${#strings.abbreviate(article.content,100)}">
+                        Problems look mighty small from 150 miles up
+                    </h3>
+                </a>
+                <p class="post-meta">Posted by
+                    <a th:href="@{/}">Hinstein Blog</a>
+                    on [[${#dates.format(article.date,'yyyy-MM-dd HH:mm:ss')}]]</p>
+                <hr>
+            </div>
+            <!-- Pager -->
+            <div class="clearfix">
+                <a class="btn btn-primary " th:href="@{/blog/}+${prePage}" th:hidden="${prePage}==0">Previous Page</a>
+                <!--<a class="btn btn-primary " th:href="@{/blog/1}">1</a>-->
+                <!--<a class="btn btn-primary " th:href="@{/blog/2}">2</a>-->
+                <!--<a class="btn btn-primary " th:href="@{/blog/3}">3</a>-->
+                <a th:each="i:${#numbers.sequence(1,maxPage)}">
+                    <a th:text="${i}" class="btn btn-primary" th:href="@{/blog/}+${i}"></a>
+                </a>
+                <a class="btn btn-primary " th:href="@{/blog/}+${nextPage}" th:hidden="${nextPage}==0">Next Page</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <p class="copyright text-muted">Copyright &copy; <a th:href="@{/}">Hinstein Blog</a> 2018</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Bootstrap core JavaScript -->
+<script src="assets/blog/js/jquery.min.js" th:src="@{/assets/blog/js/jquery.min.js}"></script>
+<script src="assets/blog/js/bootstrap.bundle.min.js" th:src="@{/assets/blog/js/bootstrap.bundle.min.js}"></script>
+<!-- Custom scripts for this template -->
+<script src="assets/blog/js/clean-blog.min.js" th:src="@{/assets/blog/js/clean-blog.min.js}"></script>
+</body>
+
+</html>

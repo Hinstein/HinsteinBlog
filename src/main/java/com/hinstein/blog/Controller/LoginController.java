@@ -42,6 +42,7 @@ public class LoginController {
 
     /**
      * 登录请求
+     *
      * @param username
      * @param password
      * @param map
@@ -60,22 +61,22 @@ public class LoginController {
             if (admin.getPassword().equals(password)) {
                 //添加session
                 session.setAttribute("loginUser", username);
-                int likes=0;
-                int views=0;
+                int likes = 0;
+                int views = 0;
                 Collection<Article> articles = articleService.findAll();
                 Collection<Contact> contacts = contactService.findAll();
-                Collection<RecycleBin> recycleBin= recycleBinService.recycleBinFindAll();
-                for(Article article:articles){
-                    likes=likes+article.getLikes();
-                    views=views+article.getViews();
+                Collection<RecycleBin> recycleBin = recycleBinService.recycleBinFindAll();
+                for (Article article : articles) {
+                    likes = likes + article.getLikes();
+                    views = views + article.getViews();
                 }
 
                 //放在请求域中
                 session.setAttribute("articlesSize", articles.size());
                 session.setAttribute("contactsSize", contacts.size());
                 session.setAttribute("recycleBinSize", recycleBin.size());
-                session.setAttribute("articlesLikes",likes);
-                session.setAttribute("articlesViews",views);
+                session.setAttribute("articlesLikes", likes);
+                session.setAttribute("articlesViews", views);
                 //登录成功
                 //防止重复提交表单，可以重定向到主页
                 return "redirect:/admin/main.html";

@@ -29,11 +29,11 @@ public class ContactService {
         return contactMapper.findAll();
     }
 
-    public  Contact findById(int id){
+    public Contact findById(int id) {
         return contactMapper.findById(id);
     }
 
-    public int deleteContact(int id){
+    public int deleteContact(int id) {
         return contactMapper.delete(id);
     }
 }

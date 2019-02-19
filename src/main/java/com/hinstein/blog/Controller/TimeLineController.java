@@ -25,15 +25,16 @@ public class TimeLineController {
 
     /**
      * 得到所有文章并返回时间线页面
+     *
      * @param model
      * @return
      */
     @GetMapping("/admin/timeline")
-    public String timeline(Model model){
+    public String timeline(Model model) {
 
-        List<Article> articles=articleService.findAll();
+        List<Article> articles = articleService.findAll();
 
-        model.addAttribute("articles",articles);
+        model.addAttribute("articles", articles);
         return "admin/timeline/timeline";
     }
 }

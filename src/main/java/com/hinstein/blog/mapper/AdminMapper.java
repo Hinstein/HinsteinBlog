@@ -20,6 +20,7 @@ public interface AdminMapper {
 
     /**
      * 数据库查询，找所有管理员
+     *
      * @param userName
      * @return
      */
@@ -28,6 +29,7 @@ public interface AdminMapper {
 
     /**
      * 更改密码
+     *
      * @param
      * @return
      */

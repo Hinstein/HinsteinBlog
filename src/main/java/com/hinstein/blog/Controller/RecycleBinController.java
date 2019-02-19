@@ -39,20 +39,21 @@ public class RecycleBinController {
 
     /**
      * 得到第一页回收站的信息
+     *
      * @param model
      * @param session
      * @param startPage
      * @return
      */
     @GetMapping("/admin/recycleBin/{startPage}")
-    public String getAllRecycleBin(Model model, HttpSession session, @PathVariable(name="startPage") Integer startPage) {
+    public String getAllRecycleBin(Model model, HttpSession session, @PathVariable(name = "startPage") Integer startPage) {
         PageHelper.startPage(startPage, 5);
         List<RecycleBin> recycleBins = recycleBinService.recycleBinFindAll();
         PageInfo<RecycleBin> page = new PageInfo<RecycleBin>(recycleBins);
-        model.addAttribute("recycleBins",recycleBins);
-        model.addAttribute("prePage",page.getPrePage());
-        model.addAttribute("nextPage",page.getNextPage());
-        model.addAttribute("maxPage",page.getPages());
+        model.addAttribute("recycleBins", recycleBins);
+        model.addAttribute("prePage", page.getPrePage());
+        model.addAttribute("nextPage", page.getNextPage());
+        model.addAttribute("maxPage", page.getPages());
         session.setAttribute("recycleBinSize", page.getTotal());
         return "admin/recycleBin/recycleBin";
     }
@@ -60,6 +61,7 @@ public class RecycleBinController {
 
     /**
      * 查看
+     *
      * @param id
      * @param model
      * @return
@@ -74,13 +76,13 @@ public class RecycleBinController {
 
     /**
      * 删除
+     *
      * @param id
      * @param session
      * @return
      */
     @DeleteMapping("/admin/recycleBin/{id}")
-    public String  deletContact(@PathVariable("id") Integer id ,HttpSession session)
-    {
+    public String deletContact(@PathVariable("id") Integer id, HttpSession session) {
         recycleBinService.recycleBinDelete(id);
         List<RecycleBin> recycleBins = recycleBinService.recycleBinFindAll();
         session.setAttribute("recycleBinSize", recycleBins.size());
@@ -91,13 +93,12 @@ public class RecycleBinController {
      * 恢复
      */
     @GetMapping("/admin/recycleBin/recover/{id}")
-    public String recover(@PathVariable("id") Integer id)
-    {
-        Article article= new Article();
-        RecycleBin recycleBin= recycleBinService.recycleBinFindById(id);
+    public String recover(@PathVariable("id") Integer id) {
+        Article article = new Article();
+        RecycleBin recycleBin = recycleBinService.recycleBinFindById(id);
 
         //将recycleBin对象复制到article对象
-        BeanUtils.copyProperties(recycleBin,article);
+        BeanUtils.copyProperties(recycleBin, article);
 
         articleService.insert(article);
         recycleBinService.recycleBinDelete(id);

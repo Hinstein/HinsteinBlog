@@ -17,6 +17,7 @@ public interface ArticleMapper {
 
     /**
      * 数据库查询，找到所有文章
+     *
      * @return 所有文章
      */
     @Select("select * from article ORDER BY date DESC")
@@ -24,6 +25,7 @@ public interface ArticleMapper {
 
     /**
      * 数据库查询，通过id找到文章
+     *
      * @param id
      * @return 相应的文章
      */
@@ -32,6 +34,7 @@ public interface ArticleMapper {
 
     /**
      * 数据库插入新的文章
+     *
      * @param article
      * @return 是否插入成功
      */
@@ -40,6 +43,7 @@ public interface ArticleMapper {
 
     /**
      * 数据库更新文章
+     *
      * @param article
      * @return 是否更新成功
      */
@@ -48,6 +52,7 @@ public interface ArticleMapper {
 
     /**
      * 数据库删除文章
+     *
      * @param id
      * @return 是否删除成功
      */
@@ -57,6 +62,7 @@ public interface ArticleMapper {
 
     /**
      * 数据库更新浏览数
+     *
      * @param id
      * @return 是否更新成功
      */
@@ -65,6 +71,7 @@ public interface ArticleMapper {
 
     /**
      * 数据库更新点赞数
+     *
      * @param id
      * @return 是否更新成功
      */

@@ -26,7 +26,7 @@ public class AdminService {
         return adminMapper.findByUserName(username);
     }
 
-    public int changePassword(Admin admin){
+    public int changePassword(Admin admin) {
         return adminMapper.changePassword(admin);
     }
 }

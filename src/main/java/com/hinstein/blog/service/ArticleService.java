@@ -47,7 +47,7 @@ public class ArticleService {
         return articleMapper.pageViews(id);
     }
 
-    public int goodJbo(int id){
+    public int goodJbo(int id) {
         return articleMapper.goodJob(id);
     }
 }

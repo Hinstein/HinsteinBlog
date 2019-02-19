@@ -81,9 +81,4 @@ public class Article {
     }
 
 
-    public Article() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
 }

@@ -38,52 +38,37 @@ public class ArticleController {
     @Autowired
     RecycleBinService recycleBinService;
 
-//    @GetMapping(value = "/admin/articles")
-//    public String list(Model model, HttpSession session) {
-//        List<Article> articles = articleService.findAll();
-//
-////        for(Article article:articles)
-////        {
-////            System.out.println(article);
-////        }
-//        //放在请求域中
-//        //倒序输出
-//        Collections.reverse(articles);
-//        model.addAttribute("articles", articles);
-//        session.setAttribute("articlesSize", articles.size());
-//        //thymeleaf默认就会自动拼串
-//        return "/admin/article";
-//    }
 
     @RequestMapping("/admin/articles")
-    public String getFirstPage(Model model,HttpSession session) {
-
+    public String getFirstPage() {
         return "redirect:/admin/articles/1";
     }
 
 
     /**
      * 文章分页
+     *
      * @param model
      * @param session
      * @param startPage
      * @return
      */
     @GetMapping("/admin/articles/{startPage}")
-    public String getAllArticle(Model model,HttpSession session, @PathVariable(name="startPage") Integer startPage) {
+    public String getAllArticle(Model model, HttpSession session, @PathVariable(name = "startPage") Integer startPage) {
         PageHelper.startPage(startPage, 5);
         List<Article> articles = articleService.findAll();
         PageInfo<Article> page = new PageInfo<>(articles);
-        model.addAttribute("articles",articles);
-        model.addAttribute("prePage",page.getPrePage());
-        model.addAttribute("nextPage",page.getNextPage());
-        model.addAttribute("maxPage",page.getPages());
+        model.addAttribute("articles", articles);
+        model.addAttribute("prePage", page.getPrePage());
+        model.addAttribute("nextPage", page.getNextPage());
+        model.addAttribute("maxPage", page.getPages());
         session.setAttribute("articlesSize", page.getTotal());
         return "/admin/article/article";
     }
 
     /**
      * 编写博客页面
+     *
      * @param model
      * @return
      */
@@ -97,6 +82,7 @@ public class ArticleController {
 
     /**
      * 添加博客
+     *
      * @param article
      * @return
      */
@@ -118,6 +104,7 @@ public class ArticleController {
 
     /**
      * 来到修改页面，查出当前博客，在页面回显
+     *
      * @param id
      * @param model
      * @return
@@ -132,6 +119,7 @@ public class ArticleController {
 
     /**
      * 博客修改:需要更新的博客id
+     *
      * @param article
      * @return
      */
@@ -144,16 +132,17 @@ public class ArticleController {
 
     /**
      * 博客删除
+     *
      * @param id
      * @return
      */
     @DeleteMapping("/admin/article/{id}")
     public String deleteArticle(@PathVariable("id") Integer id) {
-        RecycleBin recycleBin=new RecycleBin();
-        Article article= articleService.findById(id);
+        RecycleBin recycleBin = new RecycleBin();
+        Article article = articleService.findById(id);
 
         //将article对象复制到recycleBIn对象
-        BeanUtils.copyProperties(article,recycleBin);
+        BeanUtils.copyProperties(article, recycleBin);
 
         recycleBinService.recycleBinInsert(recycleBin);
 

@@ -29,6 +29,7 @@ public class NotificationController {
 
     /**
      * 来到留言列表第一页
+     *
      * @param model
      * @param session
      * @param startPage
@@ -49,6 +50,7 @@ public class NotificationController {
 
     /**
      * 查看
+     *
      * @param id
      * @param model
      * @return
@@ -62,13 +64,13 @@ public class NotificationController {
 
     /**
      * 删除留言
+     *
      * @param id
      * @param session
      * @return
      */
     @DeleteMapping("/admin/contact/{id}")
-    public String  deletContact(@PathVariable("id") Integer id ,HttpSession session)
-    {
+    public String deletContact(@PathVariable("id") Integer id, HttpSession session) {
         contactService.deleteContact(id);
         List<Contact> contacts = contactService.findAll();
         session.setAttribute("contactsSize", contacts.size());

@@ -69,6 +69,7 @@ public class Contact {
     public void setMessage(String message) {
         this.message = message;
     }
+
     @Override
     public String toString() {
         return "contact [name=" + name + ", emailAddress=" + emailAddress + ", phoneNumber=" + phoneNumber + ",message=" + message +

@@ -18,6 +18,7 @@ public interface RecycleBinMapper {
 
     /**
      * 数据库查找所有回收站博客
+     *
      * @return
      */
     @Select("select * from recyclebin ORDER BY id DESC")
@@ -25,6 +26,7 @@ public interface RecycleBinMapper {
 
     /**
      * 数据库根据id找到回收站里的博客
+     *
      * @param id
      * @return
      */
@@ -33,6 +35,7 @@ public interface RecycleBinMapper {
 
     /**
      * 数据库删除回收站里的博客
+     *
      * @param id
      * @return
      */
@@ -41,6 +44,7 @@ public interface RecycleBinMapper {
 
     /**
      * 数据库插入博客
+     *
      * @param recyclebin
      * @return
      */

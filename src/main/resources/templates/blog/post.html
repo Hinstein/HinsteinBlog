@@ -21,7 +21,7 @@
 
     <script src="assets/blog/js/jquery.min.js" th:src="@{/webjars/jquery/3.3.1-1/jquery.js}"></script>
 
-    <link rel="stylesheet" th:src="@{/webjars/layui/2.4.5/css/layui.css}"  media="all">
+    <link rel="stylesheet" th:src="@{/webjars/layui/2.4.5/css/layui.css}" media="all">
 
 </head>
 
@@ -76,18 +76,18 @@
             </div>
         </div>
         <hr>
-        <form name="demo" >
+        <form name="demo">
             <div class="container form-inline text-center">
                 <p class="copyright text-muted  form-group center-block">觉得不错记得给我点赞哦!</p>
                 <input type="text" th:value="${article.id}" style="display: none;" id="value">
                 <!--<input class="form-group " type=image  th:src="@{/assets/img/good.jpg}">-->
                 <!--<button id="supportBtn" type="button" value="点赞" th:src="@{/assets/img/good.jpg}">-->
-                    <!--点赞</button>-->
-                <img type="img" th:src="@{/assets/img/good.jpg}"  id="supportBtn">
+                <!--点赞</button>-->
+                <img type="img" th:src="@{/assets/img/good.jpg}" id="supportBtn">
                 <!--th:action="@{/blog/post/}+${article.id}"-->
             </div>
             <!--<div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">-->
-                <!--<button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal" id="Btn">居中弹出</button>-->
+            <!--<button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal" id="Btn">居中弹出</button>-->
 
             <!--</div>-->
         </form>
@@ -122,7 +122,7 @@
             $.ajax({
                 url: articleId,
                 method: "post",
-                dataType:"json",
+                dataType: "json",
                 success: function () {
                     layer.msg("点赞成功，谢谢你的支持！");
                 }, error: function () {

@@ -17,6 +17,7 @@ public interface ContactMapper {
 
     /**
      * 数据库新建留言
+     *
      * @param contact
      * @return 是否建立成功
      */
@@ -25,6 +26,7 @@ public interface ContactMapper {
 
     /**
      * 数据库查找所有留言
+     *
      * @return 所有留言
      */
     @Select("select * from contact ORDER BY id DESC")
@@ -32,6 +34,7 @@ public interface ContactMapper {
 
     /**
      * 数据库通过id找到留言
+     *
      * @param id
      * @return 找到的留言
      */
@@ -40,6 +43,7 @@ public interface ContactMapper {
 
     /**
      * 数据库通过id删除留言
+     *
      * @param id
      * @return 是否删除成功
      */

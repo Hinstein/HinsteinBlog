@@ -46,12 +46,14 @@ public class BlogController {
 
     /**
      * 来到第一页博客
+     *
      * @param model
      * @param startPage
      * @return
      */
     @GetMapping("/blog/{startPage}")
     public String getAllUser(Model model, @PathVariable(name = "startPage") Integer startPage) {
+
         PageHelper.startPage(startPage, 5);
         List<Article> articles = articleService.findAll();
         PageInfo<Article> page = new PageInfo<>(articles);
@@ -64,6 +66,7 @@ public class BlogController {
 
     /**
      * 找到博客内容
+     *
      * @param id
      * @param model
      * @return
@@ -79,6 +82,7 @@ public class BlogController {
 
     /**
      * 博客点赞，异步提交
+     *
      * @param id
      * @return
      */
@@ -92,6 +96,7 @@ public class BlogController {
 
     /**
      * 得到博客内容
+     *
      * @return
      */
     @GetMapping("/blog/contact")
@@ -102,18 +107,19 @@ public class BlogController {
 
     /**
      * 提交建议
+     *
      * @param contact
      * @return
      */
     @ResponseBody
     @PostMapping("/blog/contact/submit")
-    public Map<String,String> contact(Contact contact) {
-        Map<String,String> res = new HashMap<>();
-        res.put("msg","xxx");
-        res.put("err","xxx");
+    public Map<String, String> contact(Contact contact) {
+        Map<String, String> res = new HashMap<>();
+        res.put("msg", "xxx");
+        res.put("err", "xxx");
         contact.setDate(new Date());
         contactService.insert(contact);
-        return  res;
+        return res;
     }
 
 

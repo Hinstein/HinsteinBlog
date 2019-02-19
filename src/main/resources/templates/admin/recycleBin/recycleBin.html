@@ -269,7 +269,8 @@
                                         </a>
                                     </li>
                                     <li class="page-item" th:each="i:${#numbers.sequence(1,maxPage)}">
-                                        <a class="page-link" href="#" th:text="${i}" th:href="@{/admin/recycleBin/}+${i}">1</a>
+                                        <a class="page-link" href="#" th:text="${i}"
+                                           th:href="@{/admin/recycleBin/}+${i}">1</a>
                                     </li>
 
                                     <!--<a th:each="i:${#numbers.sequence(1,maxPage)}">-->
@@ -277,7 +278,8 @@
                                     <!--</a>-->
 
                                     <li class="page-item">
-                                        <a class="page-link " aria-label="Next" disabled="disabled" th:href="@{/admin/recycleBin/}+${nextPage}"
+                                        <a class="page-link " aria-label="Next" disabled="disabled"
+                                           th:href="@{/admin/recycleBin/}+${nextPage}"
                                            th:hidden="${nextPage}==0">
                                             <span aria-hidden="true">&raquo;</span>
                                             <span class="sr-only">Next</span>

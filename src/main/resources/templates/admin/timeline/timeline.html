@@ -230,7 +230,8 @@
                                     <li class="layui-timeline-item" th:each="article:${articles}">
                                         <i class="layui-icon layui-timeline-axis"></i>
                                         <div class="layui-timeline-content layui-text">
-                                            <h3 class="layui-timeline-title" th:text="${#dates.format(article.date, 'yyyy-MM-dd HH:mm')}">8月18日</h3>
+                                            <h3 class="layui-timeline-title"
+                                                th:text="${#dates.format(article.date, 'yyyy-MM-dd HH:mm')}">8月18日</h3>
                                             <p th:text="${article.title}">
 
                                                 <i class="layui-icon"></i>

@@ -17,8 +17,6 @@ import org.springframework.web.servlet.config.annotation.*;
 @Configuration
 public class MyMvcConfig implements WebMvcConfigurer {
 
-
-
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/admin").setViewName("admin/login");
@@ -34,7 +32,6 @@ public class MyMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/blog/contact.html").setViewName("blog/contact");
     }
 
-
     /**
      * 注册拦截器
      * @param registry
@@ -43,17 +40,11 @@ public class MyMvcConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
 
 //        //静态资源也会被拦截，所以需要加"/assets/**","/webjars/**"
-        String[] excludeUrl = new String[]{"/cadmin/login","/admin/login.html","/admin/index","/admin/login/submit", "/", "/admin", "/admin/index.html", "/assets/**", "/webjars/**", "/blog/**"};
+        String[] excludeUrl = new String[]{"/admin/login","/admin/login.html","/admin/index","/admin/login/submit", "/", "/admin", "/admin/index.html", "/assets/**", "/webjars/**", "/blog/**"};
 
 //        String[] excludeUrl = new String[]{"/admin/login", "/assets/**", "/webjars/**", "/blog/**"};
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/admin/**").excludePathPatterns(excludeUrl);
 
     }
-
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**")
-//                .excludePathPatterns("/webjars/**").excludePathPatterns("/index.html").excludePathPatterns("/asserts/**");
-//    }
 
 }
